@@ -13,7 +13,7 @@
 	})
     app.post("/webhook", async (req, res) => {
      const Payload = req.body;
-    //Respond To Heroku Webhook
+    //Responde a la Webhook de heroku
      res.sendStatus(200);
 	 
      const options = {
@@ -23,7 +23,7 @@
       headers: {
        "Content-type": "application/json",
       },
-    //Format JSON DATA
+    //Crea los datos en JSON
       body: JSON.stringify({
 	   embeds: [{
 		   title: `Heroku Notification ${Payload.data.app.name}`,
@@ -57,4 +57,4 @@
       console.log(response);
      });
     });
-    app.listen(3000, () => console.log("App is running on port 3000!"));
+    app.listen(3000, () => console.log("El servidor esta listo"));
