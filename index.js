@@ -14,8 +14,8 @@
     app.post("/webhook", async (req, res) => {
      const Payload = req.body;
     //Responde a la Webhook de heroku
-     res.sendStatus(200);
-	 
+	  if(!Payload.data.app.name == process.env.NAME) return res.sendStatus(403);
+ 	 res.sendStatus(200);
      const options = {
       method: "POST",
       url:
@@ -23,6 +23,7 @@
       headers: {
        "Content-type": "application/json",
       },
+
     //Crea los datos en JSON
       body: JSON.stringify({
 	   embeds: [{
